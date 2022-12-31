@@ -1,39 +1,18 @@
 import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+import router from "./components/router/TaskRouter.js";
 
 const app = express();
 
 const PORT = 8000;
 
-app.use("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "Success",
-  });
-});
-app.get("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "Success",
-  });
-});
-app.post("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "posted",
-  });
-});
-app.put("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "updated",
-  });
-});
-app.delete("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "deleted",
-  });
-});
+// middleware
+// app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
+
+app.use("/api/v1/task", router);
 
 app.listen(PORT, (error) => {
   error
