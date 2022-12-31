@@ -17,6 +17,21 @@ connectDb();
 
 app.use("/api/v1/task", router);
 
+app.use("*", (req, res, next) => {
+  const error= {
+    code: 404,
+    message:"page not found"
+  }
+  next(error)
+})
+app.use((error, req, res, next) => {
+  const statusCode = error.code || 500
+  res.status(statusCode).json({
+    status:"error",
+    message:error.message
+  })
+})
+
 app.listen(PORT, (error) => {
   error
     ? console.log(error)

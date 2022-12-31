@@ -4,7 +4,7 @@ export const getUser = () => {
   return UserSchema.find();
 };
 export const postUser = (userObj) => {
-  return UserSchema().save();
+  return UserSchema(userObj).save();
 };
 export const updateUser = (filter, userObj) => {
   return UserSchema.findOneAndUpdate(filter, userObj, { new: true });
