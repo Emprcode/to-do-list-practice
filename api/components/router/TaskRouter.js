@@ -1,5 +1,5 @@
 import express from "express";
-import { getUser, postUser } from "../model/users/UserModel.js";
+import { getUser, postUser, updateUser } from "../model/users/UserModel.js";
 
 const router = express.Router();
 
@@ -40,7 +40,7 @@ router.put("/", async (req, res, next) => {
     const { _id, ...rest } = req.body;
     const filter = { _id };
     // const userObj = {...rest}
-    const result = await getUser(filter, rest);
+    const result = await updateUser(filter, rest);
     result?._id
       ? res.json({
           status: "200 OK",
