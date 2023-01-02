@@ -9,6 +9,6 @@ export const postUser = (userObj) => {
 export const updateUser = (filter, userObj) => {
   return UserSchema.findOneAndUpdate(filter, userObj, { new: true });
 };
-export const deleteUser = (_id) => {
-  return UserSchema.findByIdAndDelete(_id);
+export const deleteUser = (filter) => {
+  return UserSchema.findByIdAndDelete(filter);
 };
