@@ -34,11 +34,26 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
-router.put("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "updated",
-  });
+
+router.put("/", async (req, res, next) => {
+  try {
+    const { _id, ...rest } = req.body;
+    const filter = { _id };
+    // const userObj = {...rest}
+    const result = await getUser(filter, rest);
+    result?._id
+      ? res.json({
+          status: "200 OK",
+          message: "updated",
+        })
+      : res.json({
+          status: "404 error",
+          message: "unable to update the  user",
+        });
+  } catch (error) {
+    error.code = 500;
+    next(error);
+  }
 });
 router.delete("/", (req, res, next) => {
   res.json({
