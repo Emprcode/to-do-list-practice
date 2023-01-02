@@ -1,5 +1,5 @@
 import express from "express";
-import { getUser, postUser, updateUser } from "../model/users/UserModel.js";
+import { getUser, postUser, updateUser,deleteUser  } from "../model/users/UserModel.js";
 
 const router = express.Router();
 
@@ -55,11 +55,24 @@ router.put("/", async (req, res, next) => {
     next(error);
   }
 });
-router.delete("/", (req, res, next) => {
-  res.json({
-    status: "200 OK",
-    message: "deleted",
-  });
+router.delete("/:_id", async(req, res, next) => {
+  try {
+    const {_id} =  req.params
+
+    const result = await deleteUser(_id);
+    result?._id
+      ? res.json({
+          status: "200 OK",
+          message: "deleted",
+        })
+      : res.json({
+          status: "404 error",
+          message: "unable to delete the  user",
+        });
+  } catch (error) {
+    error.code = 500;
+    next(error);
+  }
 });
 
 export default router;
