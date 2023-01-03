@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { postUser } from "../helper/axiosHelper";
 import { CustomInfieldForm } from "./CustomInfieldForm/CustomInfieldForm";
+import { toast } from "react-toastify";
 
 export const SearchForm = () => {
   const [newUser, setNewUser] = useState({});
@@ -42,10 +43,10 @@ export const SearchForm = () => {
     setNewUser({ ...newUser, [name]: value });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(newUser);
-    postUser(newUser);
+    const { status, message } = await postUser(newUser);
+    toast[status](message);
   };
 
   return (
