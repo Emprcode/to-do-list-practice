@@ -1,9 +1,17 @@
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
     <div className="App">
-      <h2>Hello world</h2>
+      <section className="form">
+        <Container />
+      </section>
+      <section className="table">
+        <Container />
+      </section>
     </div>
   );
 }
