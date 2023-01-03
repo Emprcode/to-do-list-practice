@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap'
 
 export const CustomInfieldForm = ({label, ...rest}) => {
   return (
-    <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Group className="mb-3" >
         <Form.Label>{label}</Form.Label>
         <Form.Control {...rest} />
       </Form.Group>

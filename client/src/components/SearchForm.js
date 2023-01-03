@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { postUser } from "../helper/axiosHelper";
 import { CustomInfieldForm } from "./CustomInfieldForm/CustomInfieldForm";
 
 export const SearchForm = () => {
+  const [newUser, setNewUser] = useState({});
   const inputFields = [
     {
       name: "fname",
@@ -34,10 +37,22 @@ export const SearchForm = () => {
     },
   ];
 
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(newUser);
+    postUser(newUser);
+  };
+
   return (
-    <Form>
+    <Form className="mt-5" onSubmit={handleOnSubmit}>
+      <h2>User Form Registration!</h2>
       {inputFields.map((item, i) => (
-        <CustomInfieldForm key={i} {...item} />
+        <CustomInfieldForm key={i} {...item} onChange={handleOnChange} />
       ))}
 
       <Button variant="primary" type="submit">
