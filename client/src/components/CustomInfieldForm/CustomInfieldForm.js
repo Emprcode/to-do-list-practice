@@ -1,11 +1,11 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
-export const CustomInfieldForm = () => {
+export const CustomInfieldForm = ({label, ...rest}) => {
   return (
     <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Label>{label}</Form.Label>
+        <Form.Control {...rest} />
       </Form.Group>
     
   )
