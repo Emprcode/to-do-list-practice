@@ -46,7 +46,8 @@ export const SearchForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const { status, message } = await postUser(newUser);
-    toast[status](message);
+    // toast[status](message);
+    toast(message);
   };
 
   return (
