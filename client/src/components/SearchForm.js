@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { postUser } from "../helper/axiosHelper";
 import { CustomInfieldForm } from "./CustomInfieldForm/CustomInfieldForm";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export const SearchForm = () => {
   const [newUser, setNewUser] = useState({});
