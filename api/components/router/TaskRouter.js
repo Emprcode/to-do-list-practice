@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
     result?._id
       ? res.json({
           status: "200 OK",
-          message: "posted",
+          message: "user successfully added",
         })
       : res.json({
           status: "404 error",

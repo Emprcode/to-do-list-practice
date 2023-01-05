@@ -3,9 +3,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { postUser } from "../helper/axiosHelper";
 import { CustomInfieldForm } from "./CustomInfieldForm/CustomInfieldForm";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 
-export const SearchForm = () => {
+export const SearchForm = ({getUsers}) => {
   const [newUser, setNewUser] = useState({});
   const inputFields = [
     {
@@ -48,6 +48,8 @@ export const SearchForm = () => {
     const { status, message } = await postUser(newUser);
     // toast[status](message);
     toast(message);
+
+    status === "success" && getUsers()
   };
 
   return (
