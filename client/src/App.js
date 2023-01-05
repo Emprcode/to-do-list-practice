@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { getUser } from "./helper/axiosHelper";
+import { UserTable } from "./components/UserTable.js";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -23,6 +24,9 @@ function App() {
         </Container>
       </section>
       <section className="table"></section>
+      <Container>
+        <UserTable />
+      </Container>
       <ToastContainer />
     </div>
   );
