@@ -13,7 +13,7 @@ export const postUser = async (userObj) => {
 
 export const getUser = async () => {
   try {
-    const { data } = await axios.post(apiEp);
+    const { data } = await axios.get(apiEp);
     return data;
   } catch (error) {
     console.log(error);

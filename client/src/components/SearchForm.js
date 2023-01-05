@@ -49,7 +49,7 @@ export const SearchForm = ({getUsers}) => {
     // toast[status](message);
     toast(message);
 
-    status === "success" && getUsers()
+    status === "200 OK" && getUsers()
   };
 
   return (
