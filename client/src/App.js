@@ -21,11 +21,13 @@ function App() {
       <section className="form">
         <Container>
           <SearchForm getUsers={getUsers} />
+          <hr />
         </Container>
       </section>
       <section className="table"></section>
       <Container>
-        <UserTable />
+        10 user found
+        <UserTable users={users} />
       </Container>
       <ToastContainer />
     </div>
