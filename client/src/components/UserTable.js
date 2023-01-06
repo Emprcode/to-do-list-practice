@@ -1,11 +1,15 @@
 import { Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { toast } from "react-toastify";
 import { deleteUser } from "../helper/axiosHelper.js";
 
-export const UserTable = ({ users }) => {
+export const UserTable = ({ users, getUsers }) => {
   const handleOnDelete = async (_id) => {
     if (window.confirm("Are you sure you wanna delete this user?")) {
-      const result = await deleteUser(_id);
+      const { status, message } = await deleteUser(_id);
+      getUsers();
+      // toast[status](message);
+      toast(message);
     }
   };
   return (

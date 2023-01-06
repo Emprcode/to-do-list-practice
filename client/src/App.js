@@ -4,12 +4,16 @@ import { Container } from "react-bootstrap";
 import { SearchForm } from "./components/SearchForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUser } from "./helper/axiosHelper";
 import { UserTable } from "./components/UserTable.js";
 
 function App() {
   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const getUsers = async () => {
     const { result } = await getUser();
@@ -27,7 +31,7 @@ function App() {
       <section className="table"></section>
       <Container>
         {users.length} user found
-        <UserTable users={users} />
+        <UserTable users={users} getUsers={getUsers} />
       </Container>
       <ToastContainer />
     </div>
