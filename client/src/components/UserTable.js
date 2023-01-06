@@ -1,7 +1,13 @@
 import { Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { deleteUser } from "../helper/axiosHelper.js";
 
 export const UserTable = ({ users }) => {
+  const handleOnDelete = async (_id) => {
+    if (window.confirm("Are you sure you wanna delete this user?")) {
+      const result = await deleteUser(_id);
+    }
+  };
   return (
     <Table striped bordered hover>
       <thead>
@@ -19,7 +25,10 @@ export const UserTable = ({ users }) => {
             <td>{email}</td>
             <td>
               <Button variant="warning"> Edit</Button>{" "}
-              <Button variant="danger"> Delete</Button>
+              <Button variant="danger" onClick={() => handleOnDelete(_id)}>
+                {" "}
+                Delete
+              </Button>
             </td>
           </tr>
         ))}
