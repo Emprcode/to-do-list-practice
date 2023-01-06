@@ -26,7 +26,7 @@ function App() {
       </section>
       <section className="table"></section>
       <Container>
-        10 user found
+        {users.length} user found
         <UserTable users={users} />
       </Container>
       <ToastContainer />

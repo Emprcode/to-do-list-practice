@@ -1,6 +1,7 @@
-import Table from 'react-bootstrap/Table';
+import { Button } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 
-export const UserTable =({users}) => {
+export const UserTable = ({ users }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -11,17 +12,18 @@ export const UserTable =({users}) => {
         </tr>
       </thead>
       <tbody>
-        {
-          users.map(({_id, fname, lname, email}) => <tr key={_id}>
-        
-          <td>{fname}</td>
-          <td>{lname}</td>
-          <td>{email}</td>
-        </tr> )
-        }
-        
-        
+        {users.map(({ _id, fname, lname, email }) => (
+          <tr key={_id}>
+            <td>{fname}</td>
+            <td>{lname}</td>
+            <td>{email}</td>
+            <td>
+              <Button variant="warning"> Edit</Button>{" "}
+              <Button variant="danger"> Delete</Button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   );
-}
+};
