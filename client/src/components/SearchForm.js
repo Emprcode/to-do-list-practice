@@ -50,6 +50,7 @@ export const SearchForm = ({getUsers}) => {
     toast(message);
 
     status === "200 OK" && getUsers()
+   
   };
 
   return (
