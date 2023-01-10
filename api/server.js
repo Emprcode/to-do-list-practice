@@ -2,6 +2,7 @@ import express from 'express'
 import morgan from 'morgan';
 import cors from 'cors';
 import router from './src/routers/userRouter.js';
+import { connectDb } from './src/dbConfig/dbConfig.js';
 
 const app = express()
 
@@ -10,6 +11,10 @@ const PORT = 8000;
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(cors())
+
+
+// database config
+connectDb()
 
 app.use("/api/v1/user", (router))
 
