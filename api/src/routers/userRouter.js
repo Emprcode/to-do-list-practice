@@ -1,10 +1,23 @@
-import express from 'express'
+import express from "express";
 
-const router = express.Router()
+const router = express.Router();
 
-app.post("/", (req, res, next)=> {
-    res.json({
-        status:"success",
-        message:"success"
-    })
-})
+// post
+
+router.post("/", (req, res, next) => {
+  res.json({
+    status: "success",
+    message: "success",
+  });
+});
+
+// get
+
+router.post("/", (req, res, next) => {
+  res.json({
+    status: "success",
+    message: "success",
+  });
+});
+
+export default router;
