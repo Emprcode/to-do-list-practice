@@ -13,7 +13,7 @@ router.post("/", (req, res, next) => {
 
 // get
 
-router.post("/", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.json({
     status: "success",
     message: "success",

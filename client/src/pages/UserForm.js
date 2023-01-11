@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { toast } from "react-toastify";
 import { UserCustomFields } from "../components/customFields/UserCustomFields";
+import { postUser } from "../components/helper/axiosHelper";
 
 const inputFields = [
   {
@@ -41,10 +44,28 @@ const inputFields = [
 ];
 
 export const UserForm = () => {
+  const [userList, setUserList] = useState({});
+
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+
+    setUserList({
+      ...userList,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    const { status, message } = await postUser(userList);
+    toast[status](message);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleOnSubmit}>
       {inputFields.map((item, i) => (
-        <UserCustomFields key={i} {...item} />
+        <UserCustomFields key={i} {...item} onChange={handleOnchange} />
       ))}
 
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
