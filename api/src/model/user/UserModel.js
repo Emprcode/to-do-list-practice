@@ -1,4 +1,4 @@
-import UserSchema from "./UserSchema"
+import UserSchema from "./UserSchema.js"
 
 // create
 

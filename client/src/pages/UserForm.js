@@ -44,13 +44,13 @@ const inputFields = [
 ];
 
 export const UserForm = () => {
-  const [userList, setUserList] = useState({});
+  const [newuser, setNewuser] = useState({});
 
   const handleOnchange = (e) => {
     const { name, value } = e.target;
 
-    setUserList({
-      ...userList,
+    setNewuser({
+      ...newuser,
       [name]: value,
     });
   };
@@ -58,7 +58,7 @@ export const UserForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    const { status, message } = await postUser(userList);
+    const { status, message } = await postUser(newuser);
     toast[status](message);
   };
 

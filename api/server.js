@@ -27,7 +27,7 @@ app.use("*" , (req, res, next)=> {
 })
 
 app.use((error, req, res, next) => {
-    const statusCode = errorCode || 500
+    const statusCode = error || 500
     res.status(statusCode).json({
         status:"error",
         message:error.message

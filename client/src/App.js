@@ -4,8 +4,16 @@ import { Container } from "react-bootstrap";
 import { UserForm } from "./pages/UserForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import { getUser } from "./components/helper/axiosHelper";
 
 function App() {
+  const [userList, setUserList] = useState([]);
+
+  const FetchUser = async () => {
+    const result = await getUser();
+    console.log(result);
+  };
   return (
     <div className="">
       <section className="mt-5">

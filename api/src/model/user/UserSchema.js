@@ -4,19 +4,19 @@ const userSchema = new mongoose.Schema(
   {
     fName: {
       type: String,
-      required,
+      // required,
     },
     lName: {
       type: String,
-      required,
+      // required,
     },
     email: {
       type: String,
-      required,
+      // required,
     },
     password: {
       type: String,
-      required,
+      // required,
     },
   },
   { timestamps: true }
