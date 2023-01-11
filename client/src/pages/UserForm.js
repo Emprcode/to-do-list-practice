@@ -1,33 +1,58 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { UserCustomFields } from '../components/customFields/UserCustomFields';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { UserCustomFields } from "../components/customFields/UserCustomFields";
 
+const inputFields = [
+  {
+    name: "fName",
+    label: "First Name",
+    type: "text",
+    placeholder: "abc",
+    required: true,
+  },
+  {
+    name: "lName",
+    label: "Last Name",
+    type: "text",
+    placeholder: "xyz",
+    required: true,
+  },
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "example@email.com",
+    required: true,
+  },
+  {
+    name: "password",
+    label: "Password",
+    type: "text",
+    placeholder: "******",
+    required: true,
+  },
+  {
+    name: "confirmPassword",
+    label: "Confirm Password",
+    type: "text",
+    placeholder: "*****",
+    required: true,
+  },
+];
 
-// const inputFields ={
-    
-// }
-
-export const UserForm =() => {
+export const UserForm = () => {
   return (
-
-    
     <Form>
-        <UserCustomFields/>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+      {inputFields.map((item, i) => (
+        <UserCustomFields key={i} {...item} />
+      ))}
 
-      
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check type="checkbox" label="Check me out" required />
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
   );
-}
+};
