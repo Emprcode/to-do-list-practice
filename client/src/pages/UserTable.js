@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-export const UserTable = ({FetchUser}) => {
+export const UserTable = ({userList}) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -11,12 +11,12 @@ export const UserTable = ({FetchUser}) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+        {userList.map(({_id, fName, lName, email}) => <tr key={_id}>
+          <td>{fName}</td>
+          <td>{lName}</td>
+          <td>{email}</td>
+        </tr>)}
+        
        
       </tbody>
     </Table>

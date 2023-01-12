@@ -15,7 +15,7 @@ function App() {
     const { result } = await getUser();
     console.log(result);
 
-    setUserList({ ...userList, result });
+    setUserList(result);
   };
   return (
     <div className="">
@@ -29,7 +29,7 @@ function App() {
       <section>
         {/* userTable */}
         <Container>
-          <UserTable FetchUser={FetchUser} />
+          <UserTable userList={userList} />
         </Container>
       </section>
       <ToastContainer />
