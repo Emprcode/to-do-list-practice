@@ -6,12 +6,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { getUser } from "./components/helper/axiosHelper";
+import { UserTable } from "./pages/UserTable";
 
 function App() {
   const [userList, setUserList] = useState([]);
 
   const FetchUser = async () => {
-    const result = await getUser();
+    const { result } = await getUser();
     console.log(result);
   };
   return (
@@ -23,7 +24,12 @@ function App() {
           <UserForm />
         </Container>
       </section>
-      <section>{/* userTable */}</section>
+      <section>
+        {/* userTable */}
+        <Container>
+          <UserTable FetchUser={FetchUser} />
+        </Container>
+      </section>
       <ToastContainer />
     </div>
   );
