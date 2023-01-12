@@ -5,23 +5,47 @@ const router = express.Router();
 
 // post
 
-router.post("/", (req, res, next) => {
-  res.json({
-    status: "success",
-    message: "success",
-  });
+router.post("/", async(req, res, next) => {
+
+  try {
+  const result  = await postUser(req.body)
+
+  
+    result?._id ?
+    res.json({
+      status: "success",
+      message: "success",
+    }): 
+    res.json({
+      status: "error",
+      message: "unable to post user",
+    })
+    
+  } catch (error) {
+    next(error)
+  }
 });
 
 // get
 
 router.get("/", (req, res, next) => {
-  const user = getUser(req.body)
-  
-  res.json({
-    status: "success",
-    message: "success",
-    user
-  });
+
+  try {
+    const result = getUser(req.body)
+   
+    result?._id ?
+    res.json({
+      status: "success",
+      message: "Successfully get user",
+    })  :
+    res.json({
+      status: "error",
+      message: "unable  get user",})
+    
+    
+  } catch (error) {
+    next(error)
+  }
 });
 
 export default router;
