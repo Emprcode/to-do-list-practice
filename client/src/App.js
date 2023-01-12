@@ -14,6 +14,8 @@ function App() {
   const FetchUser = async () => {
     const { result } = await getUser();
     console.log(result);
+
+    setUserList({ ...userList, result });
   };
   return (
     <div className="">
