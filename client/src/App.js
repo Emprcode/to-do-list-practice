@@ -13,22 +13,23 @@ function App() {
 
   const FetchUser = async () => {
     const { result } = await getUser();
-    console.log(result);
-
     setUserList(result);
   };
+
+  console.log(userList);
   return (
     <div className="">
       <section className="mt-5">
         {/* UserForm */}
         <Container>
           <h2>User registration Form</h2>
-          <UserForm />
+          <UserForm FetchUser={FetchUser} />
         </Container>
       </section>
       <section>
         {/* userTable */}
         <Container>
+          <div>{userList.length} user found</div>
           <UserTable userList={userList} />
         </Container>
       </section>

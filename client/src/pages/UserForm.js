@@ -43,7 +43,7 @@ const inputFields = [
   },
 ];
 
-export const UserForm = () => {
+export const UserForm = ({FetchUser}) => {
   const [newuser, setNewuser] = useState({});
 
   const handleOnchange = (e) => {
@@ -60,6 +60,8 @@ export const UserForm = () => {
 
     const { status, message } = await postUser(newuser);
     toast[status](message);
+
+    status === "success" && FetchUser()
   };
 
   return (

@@ -27,8 +27,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(req.body);
-    const result = await getUser(req.body);
+    const result = await getUser();
     // console.log(result)
 
     res.json({
